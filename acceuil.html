@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>CATY CV </title>
+    <link  rel="icon" href="type-c.png">
+    <script src="app.js" defer></script>
+</head>
+
+<body>
+
+    <h1 class="mon">CATY <span>C</span><span class="ok">V</span></h1>
+    
+    <div id="app">
+        <!-- les inputs de données -->
+        <label name="label-nom">Nom:</label>
+        <input name="label-nom" v-model="nom" type="text">
+
+        <label name="label-prenom">Prenom:</label>
+        <input name="label-prenom" v-model="prenom" type="text">
+
+        <label name="label-adress">Adresse:</label>
+        <input name="label-adress" v-model="adress" type="text">
+        <br>
+        <label name="label-age">Date de naissance:</label>
+        <input name="label-birthday" v-model="birthday" type="date"><br><br>
+
+        <label name="label-drive">Avez vous le permis de Conduite?</label>
+
+        <input name="label-drive" v-model="drive" type="radio" v-bind:value="true">
+        <label for="label-drive">Oui</label>
+
+        <input name="label-drive" v-model="drive" type="radio" v-bind:value="false">
+        <label for="label-drive">Non</label>
+        <br> <br>
+        <!--  les inputs de formations -->
+
+        <label name="label-formation">Ajouter une formation</label>
+        <input id="schoolLib" type="text">
+
+        <label name="label-startdateschool">Date de début</label>
+        <input id="schoolStart" type="date">
+
+        <label name="label-enddateschool">Date de fin</label>
+        <input id="schoolEnd" type="date">
+
+        <button v-on:click="addSchool">Envoyer</button>
+
+        <!--  les inputs de experiences pros -->
+
+        <br> <br>
+        <label name="label-job">Ajouter une expérience</label>
+        <input id="jobLib" type="text">
+
+        <label name="label-startdatejob">Date de début</label>
+        <input id="jobStart" type="date">
+
+        <label name="label-enddatejob">Date de fin</label>
+        <input id="jobEnd" type="date">
+
+        <button v-on:click="addJob">Envoyer</button>
+
+        <!--  les inputs des competences -->
+
+        <br> <br>
+        <label name="label-skill">Ajouter une compétence</label>
+        <input id="skillLib" type="text">
+
+        <button v-on:click="addSkill">Envoyer</button>
+
+        <!-- composants -->
+
+        <personal-cmp :nom="nom" :prenom="prenom" :adress="adress" :birthday="birthday" :drive="drive"> </personal-cmp>
+
+        <formation-cmp :schools="schools"></formation-cmp>
+
+        <exp-cmp :jobs="jobs"></exp-cmp>
+
+        <skill-cmp :skills="skills"></skill-cmp>
+
+        <button @click="saveCv">Save</button>
+
+    </div>
+
+</body>
+
+
+</html>
